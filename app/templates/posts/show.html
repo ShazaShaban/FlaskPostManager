@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html'%}
+{% block title%} New Post {%endblock%}
+{% block body%}
+<h1 class="p-5 px-0">Post Details</h1>
+
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="{{ post.get_image_url }}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{post.name}}</h5>
+      <p class="card-text">{{post.body}}</p>
+      <p>created_at: {{ post.created_at }}</p>
+
+      <a href="{{url_for('posts.index', filename='posts/index.html')}}" class="btn btn-primary">Back to Home</a>
+    </div>
+  </div>
+  {%endblock%}

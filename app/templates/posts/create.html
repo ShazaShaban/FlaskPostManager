@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html'%} {%block title%} New Post {%endblock%} {%block
+body%}
+<h1 class="p-5 px-0">Add a new Post</h1>
+<div class="container">
+  <form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="" class="form-label">Name</label>
+      <input
+        type="text"
+        name="name"
+        class="form-control"
+        id=""
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Image</label>
+      <input
+        type="file"
+        name="image"
+        class="form-control"
+        id="exampleInputPassword1"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Description</label>
+      <input
+        type="text"
+        name="body"
+        class="form-control"
+        id=""
+        aria-describedby="emailHelp"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Categories</label>
+      <select
+        class="form-select"
+        name="category_id"
+        aria-label="Default select example"
+      >
+        <option selected disabled value="">Open this select menu</option>
+
+        {% for category in categories %}
+         <option value="{{category.id}}">{{category.name}}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{%endblock%}

@@ -1,0 +1,31 @@
+{% extends 'layouts/base.html' %}
+{% block title %} {{category.name}} {% endblock %}
+{% block body %}
+  <div class="container py-5">
+    <h1 class="mb-4">Posts in {{category.name}} category</h1>
+    <div class="row">
+      {% for post in category.posts %}
+      <div class="col-sm-6 mb-3 mb-sm-0 d-flex justify-content-center ">
+        <div class="card mb-3 border-0 rounded rounded-0 " style="max-width: 540px;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="{{post.get_image_url}}" class="img-fluid" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body py-0">
+                <p class="card-title fw-semibold ">{{post.name}}</p>
+                <p class="card-text">{{post.body}}</p>
+                <p class="card-text"><small class="text-body-secondary">Last updated {{post.updated_at}}</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="links">
+      <a href="{{url_for('categories.delete', id=category.id)}}" class="btn btn-danger">Delete</a>
+      <a href="{{url_for('categories.edit', id=category.id)}}" class="btn btn-danger">Edit</a>
+    </div>
+  </div>
+{% endblock %}
